@@ -92,3 +92,9 @@ Opening a fragrance displays a genuine Three.js bottle built from the same share
 The viewer is lazy-loaded only while the product dialog is open, uses on-demand rendering and capped pixel ratio, and is disposed when the dialog closes. Loading shows neutral text rather than a substitute perfume image. The modal's focus trap includes the keyboard-accessible viewer, and its shopping controls remain operational.
 
 Run `node tests/product-viewer.mjs` with the Vite server running to check real geometry and variant materials, mouse dragging, camera reset, keyboard controls, cart actions, mobile touch swiping, and dialog closure. The reload/no-placeholder test also passes after the shared-geometry extraction.
+
+## GitHub Pages deployment
+
+The repository includes `.github/workflows/deploy.yml`. Select **Settings → Pages → Source → GitHub Actions**. Push changes to `main` or run the workflow manually. It installs locked dependencies with Node.js 22, runs TypeScript and Vite's production build, and publishes only `dist` through the Pages artifact/deployment actions. Publishing the source repository root directly will not run this React/TypeScript application.
+
+Vite uses `base: './'` so production scripts, styles, and lazy-loaded 3D chunks resolve relative to the project URL. This supports `https://shaza-elshimy.github.io/LUMERE_Luxry-Interactive-3D-Perfume-Experience/` while keeping local development at `http://localhost:5173/`.
